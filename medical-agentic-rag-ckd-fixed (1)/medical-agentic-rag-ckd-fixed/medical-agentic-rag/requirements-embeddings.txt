@@ -1,5 +1,4 @@
-# Retained for backwards compatibility.
-# sentence-transformers is now part of the main requirements.txt so that the
-# Streamlit Cloud deployment gets semantic embeddings by default.
 --extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.2
+torchvision>=0.17
 sentence-transformers>=3.0
