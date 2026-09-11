@@ -1,42 +1,10 @@
-# =============================================================================
-# Streamlit Community Cloud deployment requirements.
-# Entry point: medical-agentic-rag/streamlit_app.py
-#
-# Keep this file as the DEPLOYMENT set. FastAPI/Uvicorn/Gradio are NOT needed to
-# run the Streamlit app and only add install weight and dependency-conflict
-# risk on Cloud; they live in requirements-extras.txt for local use.
-# =============================================================================
-
-# CPU-only PyTorch wheels. sentence-transformers pulls in torch, and the default
-# wheel bundles CUDA (~2 GB), which overruns the Community Cloud build. The CPU
-# index keeps it near ~200 MB.
---extra-index-url https://download.pytorch.org/whl/cpu
-
-# ---- Web UI -----------------------------------------------------------------
 streamlit>=1.36
-
-# ---- Core runtime -----------------------------------------------------------
 pydantic>=2.7,<3
 pydantic-settings>=2.2,<3
 python-dotenv>=1.0
-
-# ---- LLM provider (Groq is the default and only implemented provider) -------
 groq>=0.11
-
-# ---- Vector store (local mode: no server, no cloud account) -----------------
 qdrant-client>=1.9
 numpy>=1.26
-
-# ---- Semantic embeddings ----------------------------------------------------
-# Required for semantic retrieval with pritamdeka/S-PubMedBert-MS-MARCO.
-# NOTE: torch + a BERT-base checkpoint is memory-hungry. If the app OOMs on the
-# free Community Cloud tier, set EMBEDDING_BACKEND=hashing in secrets; retrieval
-# degrades to BM25-led hybrid rather than breaking.
-sentence-transformers>=3.0
-
-# ---- Retrieval tools --------------------------------------------------------
-httpx>=0.27          # PubMed E-utilities
-ddgs>=9.0            # DuckDuckGo search
-
-# ---- Ingestion --------------------------------------------------------------
+httpx>=0.27
+ddgs>=9.0
 pypdf>=4.2
