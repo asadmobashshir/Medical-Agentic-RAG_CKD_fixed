@@ -1,7 +1,0 @@
-# Optional local-only extras. NOT needed for the Streamlit deployment.
-#   pip install -r requirements-extras.txt
-
-fastapi>=0.110          # api/server.py
-uvicorn[standard]>=0.29 # api/server.py
-gradio>=5.0,<6.0        # app.py (Hugging Face Spaces entry point)
-pytest>=8.0             # test suite
