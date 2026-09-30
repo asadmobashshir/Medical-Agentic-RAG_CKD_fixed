@@ -1,0 +1,12 @@
+# Full local development set. NOT for Streamlit Community Cloud.
+#   pip install -r requirements-full.txt
+
+-r requirements.txt
+
+qdrant-client>=1.9      # embedded vector store (pulls grpcio)
+httpx>=0.27             # PubMed E-utilities
+ddgs>=9.0               # DuckDuckGo web search
+pypdf>=4.2              # PDF ingestion
+fastapi>=0.110          # api/server.py
+uvicorn[standard]>=0.29
+pytest>=8.0
