@@ -1,0 +1,22 @@
+# =============================================================================
+# Streamlit Community Cloud - MINIMAL deployment set.
+#
+# Only packages needed at import time are listed. Everything else in the project
+# (qdrant-client, httpx, ddgs, pypdf, sentence-transformers) is imported lazily
+# inside functions and degrades gracefully when absent:
+#
+#   qdrant-client  -> vector store falls back to the built-in NumPy backend
+#   sentence-transformers -> embeddings fall back to hashing + BM25 hybrid
+#   httpx / ddgs   -> literature_search / web_search report themselves offline
+#   pypdf          -> PDF ingestion unavailable (the demo corpus is Markdown)
+#
+# qdrant-client is excluded on purpose: it depends on grpcio, which has no
+# prebuilt wheel for recent Python versions and fails to compile on Cloud.
+# =============================================================================
+
+streamlit>=1.36
+pydantic>=2.7,<3
+pydantic-settings>=2.2,<3
+python-dotenv>=1.0
+groq>=0.11
+numpy>=1.26
