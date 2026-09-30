@@ -1,6 +1,0 @@
-streamlit
-google-genai
-pydantic
-pydantic-settings
-python-dotenv
-numpy
